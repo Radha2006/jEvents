@@ -4,8 +4,8 @@
 <% @ratingHint = getOptions('RatingHint')%>
 
 <%= form_for [@venue, @review], :remote =>true, :class=>"form-horizontal" do |f| %>
-  <div class="row-fluid">
-    <div class="roundedBorder span11">  
+  <div class="row-fluid brdr marpad5 width97">
+    <div class="span11">  
       <h4>Rate this venue</h4>
       <table class="span12 control-group">
         <tr>
@@ -70,7 +70,7 @@
 
 <% @venue.reviews.order("updated_at desc").each do |r| %>
   <% unless @review.id == r.id %>
-        <div id="<%='review'+r.id.to_s%>" class="row-fluid review">
+        <div id="<%='review'+r.id.to_s%>" class="row-fluid brdr marpad5" style=" width:70%" >
           <div class="span2" style="text-align: center; margin-top: 15px;">
             <%=image_tag "human.jpg"%><br/>
             <b><%=content_tag(:span,  r.user.name.nil? ? r.user.email : r.user.name, :class => "wordwrap")%></b>
@@ -93,7 +93,7 @@
                   <%= @ist.strftime("%B %e, %Y at %l:%M %p %Z") %>
                 <% end %>
               </div>
-            <div class="margin10">
+            <div class="margin10 ">
               <% unless r.rating_venue.nil? %>
                 <div class="span3">
                   <b>Venue</b><br/>

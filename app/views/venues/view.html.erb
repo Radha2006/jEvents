@@ -51,6 +51,7 @@ end%>
           <%= pluralize(@venue.reviews.size, 'Review') %>
         <% end %>
         <br/>
+        <br/>
 
         <div class="fb-like fr" data-width="250" data-action="recommend" data-show-faces="true"></div>
   </div>
@@ -59,7 +60,8 @@ end%>
         <%= render partial: 'ratings/rating', locals: { :venues => @venue } %>    
 
         <% if @hasUserAlreadyRated %>
-            You have rated this venue.
+           <br/> 
+           <span style="font-weight:normal"> You have rated this venue. </span>
         <% else %>
         <div id="rating-div">
            <span style="font-weight:normal"> Rate this venue:</span>
@@ -78,16 +80,16 @@ end%>
 <!-- Image slideshow, Imp info about venue, Contact us div statrs here -->
 <div id="show_venue" class="row-fluid width97 brdr marpad5">
   
-    <div id="image_slideshow" class="span3 brdr_right" style="">
+    <div id="image_slideshow" class="span4 brdr_right" style="">
       <div class="venue-img-div" style="margin-left:0px;" >
         <% if @venue.images.count==0 %> 
-          <%= image_tag('venue.jpg', :class => "venue-img") %>
+          <%= image_tag('venue.jpg', :class => "view_venue-img") %>
         <%else%>
         
-          <ul class="span3 bxslider">
+          <ul class="span4 bxslider">
             <%@venue.images.each do |i| %>
                 <li>
-                  <%= image_tag(url_for(:controller => "venues", :action => "show_image", :image_id => i.id), :class => "venue-img")%>
+                  <%= image_tag(url_for(:controller => "venues", :action => "show_image", :image_id => i.id), :class => "view_venue-img")%>
                 </li>
             <%end%>
           </ul>
@@ -97,9 +99,22 @@ end%>
     </div>
 
     
-    <div class="span6 venue-amenities" >
-      <p style="font-size:20px">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<%= @venue.description %></p>
-        <div class="span4 amenities-div"  style="margin-left:0px;">
+    <div class="span5 venue-amenities" >
+
+      <label class="VenueDescription"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<%= @venue.description %> </label>
+   <!--    <div id="Highlights"> 
+    <% unless @venue.highlights.count == 0 %>
+      <div class="highlights-div" >
+        <p class="higlights_heading">Highlights</p>
+          <% @venue.highlights.each do |h| %>
+             <label class="highlight_content"><%= h.highlight %></label>
+          <%end%>
+      </div>
+    <%end%>
+  </div>
+  <br/> -->
+      
+        <div class="span5 amenities-div"  style="margin-left:0px;">
           <ul>
             <li>
               <%= unless @venue.min_capacity.nil? 
@@ -147,6 +162,17 @@ end%>
               end %>
             </li>    
           </ul>     
+        </div> 
+    
+        <div id="Highlights"> 
+          <% unless @venue.highlights.count == 0 %>
+          <div class="highlights-div" >
+              <p class="higlights_heading">Highlights</p>
+                <% @venue.highlights.each do |h| %>
+                <label class="highlight_content"><%= h.highlight %></label>
+                <%end%>
+          </div>
+          <%end%>
         </div>
   
     </div>
@@ -155,7 +181,7 @@ end%>
          <p class="contactUs_heading">Contact Us</p>
                  
               <p> Mobile   : <span class="info"> 8220043507 </span> <br/>
-                             Email-id :<span class="info">contact@jollyeventz.com </span> 
+                             Email-id : <span class="info">contact@jollyeventz.com </span> 
               </p>
               
               <p> Enquire-us <br/>
@@ -169,19 +195,10 @@ end%>
 <!-- Image slideshow, Imp info about venue, Contact us div statrs here -->
 
 
-<!-- Tab Menu and Highlights starts here -->
+<!-- Tab Menu starts here -->
 <div class="row-fluid brdr width97 marpad5">
   
-  <div id="Highlights" class="span5" style="float:right; "> 
-    <% unless @venue.highlights.count == 0 %>
-      <div class="highlights-div" >
-        <p class="higlights_heading">Highlights</p>
-          <% @venue.highlights.each do |h| %>
-             <label><%= h.highlight %></label>
-          <%end%>
-      </div>
-    <%end%>
-  </div>
+  
 
   <!-- Tab2 (not external Html) -->
   <div style="width:58% ">
@@ -278,7 +295,7 @@ end%>
     </div>
   </div>
 </div>
-<!--  Tab Menu and Highlights ends here --> 
+<!--  Tab Menu ends here --> 
 
 
 <!--  Review Part starts  here --> 

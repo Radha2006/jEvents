@@ -1,3 +1,4 @@
+/* ---------- search page Results --------- */
 .SearchResults{
   padding: 5px 4px;
   padding-right: 8px;
@@ -158,17 +159,19 @@ label span input {
 
 
 .brdr {
-  border: 3px solid #dddddd;
+  border: 1px solid #dddddd;
   border-color: rgba(153, 50, 204, 0.4);
+  /*box-shadow: 3px 3px 3px #dddddd; */
+  box-shadow: 3px 3px 3px #888888;
 }
 
 .brdr_right {
-  border-right: 3px solid #dddddd;
+  border-right: 1px solid #dddddd;
   border-right-color: rgba(153, 50, 204, 0.4);
 }
 
 .brdr_left {
-  border-left: 3px solid #dddddd;
+  border-left: 1px solid #dddddd;
   border-left-color: rgba(153, 50, 204, 0.4);
 
 }
@@ -217,6 +220,29 @@ label span input {
   text-align: right;
   padding:20px;
   padding-right: 6px;
+}
+
+.VenueDescription {
+  font-family: Georgia;
+  /*font-family: Georgia,"Times New Roman",Times,serif;*/
+  font-size: 15px;
+  text-indent: 0;
+  text-align: justify;
+  cursor:default;
+}
+
+.highlight_content {
+  cursor: default;
+}
+
+.view_venue-img{
+  float: left; 
+  width:200px;
+  height:150px;
+  margin-left: 5px;
+  margin-top: 6px;
+   position: relative;
+   /*border:1px solid #b3b3b3;*/
 }
 
 .view-suit {
